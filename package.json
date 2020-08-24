@@ -1,11 +1,19 @@
 {
-  "name": "cypress-cucumber-example",
+  "name": "99dotco-web-test",
   "version": "1.0.0",
   "description": "Example of cypress with cucumber",
   "main": "index.js",
   "scripts": {
     "test": "cypress run --spec \"**/*.feature\"",
-    "test:all": "cypress run --spec \"**/*.features\""
+    "test:all": "cypress run --spec \"**/*.features\"",
+    "stg:rumah123": "MARKET=rumah123 ENV=stg TAG=stg ./node_modules/.bin/cypress run --env MARKET='rumah123',ENV='stg'",
+    "stg:rumah123:debug": "MARKET='rumah123'  ENV='stg' ./node_modules/.bin/cypress open --env MARKET='rumah123',ENV='stg'",
+    "prod:rumah123": "MARKET=rumah123 ENV=prod ./node_modules/.bin/cypress run --env MARKET='rumah123',ENV='prod'",
+    "prod:rumah123:debug": "MARKET='rumah123'  ENV='prod' ./node_modules/.bin/cypress open --env MARKET='rumah123',ENV='prod'",
+    "stg:99id": "MARKET=99id ENV=stg TAG=stg ./node_modules/.bin/cypress run --env MARKET='99id',ENV='stg'",
+    "stg:99id:debug": "MARKET='99id'  ENV='stg' ./node_modules/.bin/cypress open --env MARKET='99id',ENV='stg'",
+    "prod:99id": "MARKET=99id ENV=prod ./node_modules/.bin/cypress run --env MARKET='99id',ENV='prod'",
+    "prod:99id:debug": "MARKET='99id'  ENV='prod' ./node_modules/.bin/cypress open --env MARKET='99id',ENV='prod'"
   },
   "repository": {
     "type": "git",
@@ -16,17 +24,15 @@
     "cucumber",
     "testing"
   ],
-  "author": "Lukasz Gandecki",
+  "author": "99dotco QA Team",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/TheBrainFamily/cypress-cucumber-example/issues"
-  },
   "homepage": "https://github.com/TheBrainFamily/cypress-cucumber-example#readme",
   "dependencies": {
     "cypress": "^4.9.0",
-    "cypress-cucumber-preprocessor": "^2.5.0"
+    "cypress-cucumber-preprocessor": "^2.5.0",
+    "lodash": "^4.17.20"
   },
   "cypress-cucumber-preprocessor": {
-    "nonGlobalStepDefinitions": true
+    "nonGlobalStepDefinitions": false
   }
 }

@@ -1,0 +1,5 @@
+{
+    "homepage": "/",
+    "homepage-input-searchbox": "input#formmodel-text",
+    "homepage-button-searchbox": "div.search-bar-advanced__input > button.btn-submit"
+}

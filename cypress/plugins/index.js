@@ -1,18 +1,39 @@
-// ***********************************************************
-// This example plugins/index.js can be used to load plugins
-//
-// You can change the location of this file or turn off loading
-// the plugins file with the 'pluginsFile' configuration option.
-//
-// You can read more here:
-// https://on.cypress.io/plugins-guide
-// ***********************************************************
+const cucumber = require("cypress-cucumber-preprocessor").default; // eslint-disable-line
 
-// This function is called when a project is opened or re-opened (e.g. due to
-// the project's config changing)
+const generateBaseUrl = (market, env) => {
+  const marketBaseUrl = {
+    "rumah123": {
+      "stg": 'http://13.250.50.101:8000',
+      "prod": 'https://www.rumah123.com'
+    },
+    "99id": {
+      "stg": 'https://desktop.develop.portal.99iddev.net',
+      "prod": 'https://www.99.co/id'
+    }
+  };
+  return marketBaseUrl[market][env];
+};
 
-const cucumber = require('cypress-cucumber-preprocessor').default
-module.exports = (on, config) => {
-  on('file:preprocessor', cucumber())
-}
+const generateFixtureFolder = market => {
+  return 'cypress/fixtures/test_data/' + market;
+};
+const generateIntegrationFolder = market => {
+  return 'cypress/integration/' + market;
+};
 
+const rebuildCypressConfig = (market, env) => {
+  return {
+    baseUrl: generateBaseUrl(market, env),
+    fixturesFolder: generateFixtureFolder(market),
+    integrationFolder: generateIntegrationFolder(market),
+  };
+};
+
+module.exports = on => {
+  const market = process.env.MARKET;
+  const env = process.env.ENV;
+
+  on("file:preprocessor", cucumber());
+  
+  return rebuildCypressConfig(market, env);
+};

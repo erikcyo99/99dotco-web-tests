@@ -1,0 +1,6 @@
+{
+    "homepage": "/",
+    "homepage-input-searchbox": "input.ant-select-search__field",
+    "homepage-suggestion-searchbox": "ul.ant-select-dropdown-menu-item-group-list > li .highlight",
+    "homepage-button-searchbox": "div.search-button > button.ant-btn"
+}
